@@ -1,0 +1,9 @@
+﻿<Application x:Class="Andrianow_backers_3isp9_18.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Andrianow_backers_3isp9_18"
+             StartupUri="Windows/RegistrationWindow.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
