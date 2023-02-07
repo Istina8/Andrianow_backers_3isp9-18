@@ -5,39 +5,62 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Andrianow_backers_3isp9_18"
         mc:Ignorable="d"
-        Title="Авторизация" Height="300" Width="200" 
-        MaxHeight="300"
-        MaxWidth="200"
+        Title="Авторизация" Height="450" Width="400" 
+        MaxHeight="450"
+        MaxWidth="400"
         MinHeight="300"
-        MinWidth="200">
+        MinWidth="400"
+        WindowStartupLocation="CenterScreen">
     
     <Grid>
-        
-        <Button Content="Войти" HorizontalAlignment="Center" Margin="0,190,0,0" VerticalAlignment="Top" Height="39" Width="134" Grid.Column="1" RenderTransformOrigin="0.5,0.5" Background="#FFB8B8B8" FontSize="16" FontWeight="Bold" FontFamily="Bahnschrift">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="10"/>  <!--123123123-->
-                </Style>
-            </Button.Resources>
-        </Button>
+        <StackPanel>
+            
+            <TextBlock HorizontalAlignment="Center" Margin="0,40,0,0" TextWrapping="Wrap" Text="Авторизация" VerticalAlignment="Center" FontWeight="Bold" FontSize="30"/>
+            
+            <!--ПОЛЕ ЛОГИНА--> 
+            
+            <Border CornerRadius="5" BorderThickness="1" BorderBrush="Black" Margin="40,50,40,0">
+                <TextBox Text="Login" BorderThickness="0" Height="40" 
+                         Name="txtLogin" Width="100" Margin="-190,0,9,0" VerticalContentAlignment = "Center" 
+                         FontSize ="20"
+                         GotFocus="txtLogin_GotFocus"
+                         LostFocus="txtLogin_LostFocus" 
+                         Foreground="#FF898989"/>
+            </Border>
 
-        <Border CornerRadius="5" BorderThickness="1" BorderBrush="Black" Margin="40,68,40,174">
-            <TextBox Text="Login" Background="Transparent" BorderThickness="0" Height="40" Name="txtContents" Width="100" Margin="9,0,9,0" VerticalContentAlignment = "Center" />
-        </Border>
+            <!--ПОЛЕ ПАРОЛЯ-->
+            
+            <Border CornerRadius="5" BorderThickness="1" BorderBrush="Black" Margin="40,20,40,10">
+                <TextBox Text="Password" Background="Transparent" BorderThickness="0" Height="40" 
+                         Name="txtPassword" Width="100" Margin="-190,0,9,0" VerticalContentAlignment = "Center" 
+                         FontSize="20"
+                         LostFocus = "txtPassword_LostFocus"
+                         GotFocus = "txtPassword_GotFocus"
+                         Foreground="#FF898989"
+                         />
+            </Border>
+           
+            <!--КНОПКА ВХОДА--> 
+            
+            <Button Content="Войти" HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top" Height="50" Width="200" Grid.Column="1" RenderTransformOrigin="0.5,0.5" Background="#FFB8B8B8" FontSize="20" FontWeight="Bold" FontFamily="Bahnschrift">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"/>  
+                            </Style>
+                        </Button.Resources>
+                    </Button>
 
-        <Border CornerRadius="5" BorderThickness="1" BorderBrush="Black" Margin="40,122,40,120">
-            <TextBox Text="Password" Background="Transparent" BorderThickness="0" Height="40" Name="txtContents2" Width="100" Margin="9,0,9,0" VerticalContentAlignment = "Center" />
-        </Border>
-        <TextBlock HorizontalAlignment="Center" Margin="0,-200,0,0" TextWrapping="Wrap" Text="Авторизация" VerticalAlignment="Center" FontWeight="Bold" FontSize="20"/>
-
-        <Button Content="Нет аккаунта? Зарегестрироваться" HorizontalAlignment="Center" Margin="0,254,0,0" VerticalAlignment="Top" Width="190" Foreground="#FF62BE70" FontSize="11" >
-            <Button.BorderBrush>
-                <ImageBrush/>
-            </Button.BorderBrush>
-            <Button.Background>
-                <ImageBrush/>
-            </Button.Background>
-        </Button>
-        
+                    <!--Кнопка НА РЕГЕСТРАЦИЮ-->
+            
+                    <Button Content="Нет аккаунта? Зарегестрироваться" HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top" Width="300" Foreground="#FF62BE70" FontSize="16" Click="NoAccountClick" >
+                        <Button.BorderBrush>
+                            <ImageBrush/>
+                        </Button.BorderBrush>
+                        <Button.Background>
+                            <ImageBrush/>
+                        </Button.Background>
+                    </Button>
+            </StackPanel>
+       
     </Grid>
 </Window>

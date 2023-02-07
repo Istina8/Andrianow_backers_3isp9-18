@@ -23,5 +23,13 @@ namespace Andrianow_backers_3isp9_18.Windows
         {
             InitializeComponent();
         }
+
+        private void AccountSing(object sender, RoutedEventArgs e)
+        {
+            LoginWindow taskWindow = new LoginWindow();
+            taskWindow.Show();
+            Close();
+        }
+
     }
 }

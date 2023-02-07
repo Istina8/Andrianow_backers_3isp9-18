@@ -166,7 +166,6 @@
   <ItemGroup>
     <Folder Include="ClassHelper\" />
     <Folder Include="Pages\" />
-    <Folder Include="Resur\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="DB\Model1.Context.tt">
@@ -179,6 +178,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resur\1623866981_17-phonoteka_org-p-pattern-vipechka-krasivo-20.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

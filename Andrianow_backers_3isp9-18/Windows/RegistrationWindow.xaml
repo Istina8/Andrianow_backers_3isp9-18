@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:Andrianow_backers_3isp9_18.Windows"
         mc:Ignorable="d"
         Title="RegistrationWindow" 
-        Height="800" 
+        Height="600" 
         Width="400"
-
+        WindowStartupLocation="CenterScreen"
         >
     <Grid>
 
@@ -19,30 +19,30 @@
 
 
             <Border CornerRadius="5" BorderThickness="1" BorderBrush="Black"  Width="300" Height="40" Margin="10">
-            <TextBox Text="Name" Background="Transparent" BorderThickness="0" Height="20" Name="txtContents" Width="120" VerticalContentAlignment = "Center" />
+            <TextBox Text="Name" Background="Transparent" BorderThickness="0" Height="30" Name="txtContents" Width="120" VerticalContentAlignment = "Center" Margin="9,4,169,4" FontSize="14"  />
         </Border>
 
             <Border CornerRadius="5" BorderThickness="1" BorderBrush="Black" Width="300" Height="40" Margin="10" >
-            <TextBox Text="Age" Background="Transparent" BorderThickness="0" Height="20" Name="txtContents2" Width="120"  VerticalContentAlignment = "Center" />
-        </Border>
-
-
-            <Border CornerRadius="5" BorderThickness="1" BorderBrush="Black" Width="300" Height="40" Margin="10" >
-            <TextBox Text="Login" Background="Transparent" BorderThickness="0" Height="20" Name="txtContents3" Width="120"  VerticalContentAlignment = "Center" />
+                <TextBox Text="Age" Background="Transparent" BorderThickness="0" Height="20" Name="txtContents2" Width="120"  VerticalContentAlignment = "Center" Margin="9,4,169,4" FontSize="14" />
         </Border>
 
 
             <Border CornerRadius="5" BorderThickness="1" BorderBrush="Black" Width="300" Height="40" Margin="10" >
-            <TextBox Text="Password" Background="Transparent" BorderThickness="0" Height="20" Name="txtContents4" Width="120"  VerticalContentAlignment = "Center" />
+                <TextBox Text="Login" Background="Transparent" BorderThickness="0" Height="20" Name="txtContents3" Width="120"  VerticalContentAlignment = "Center" Margin="9,4,169,4" FontSize="14" />
+        </Border>
+
+
+            <Border CornerRadius="5" BorderThickness="1" BorderBrush="Black" Width="300" Height="40" Margin="10" >
+                <TextBox Text="Password" Background="Transparent" BorderThickness="0" Height="20" Name="txtContents4" Width="120"  VerticalContentAlignment = "Center" Margin="9,4,169,4" FontSize="14" />
         </Border>
 
 
             <Border CornerRadius="5" BorderThickness="1" BorderBrush="Black" Width="300" Height="40" Margin="10">
-                <TextBox Text="Phone" Background="Transparent" BorderThickness="0" Height="20" Name="txtContents5" Width="120"  VerticalContentAlignment = "Center" />
+                <TextBox Text="Phone" Background="Transparent" BorderThickness="0" Height="20" Name="txtContents5" Width="120"  VerticalContentAlignment = "Center" Margin="9,4,169,4" FontSize="14" />
             </Border>
 
 
-            <Button Content="Зарегистрироваться"  Height="40" Width="160" RenderTransformOrigin="0.5,0.5" Background="#FFB8B8B8" FontWeight="Bold" FontFamily="Bahnschrift" Margin="100">
+            <Button Content="Зарегистрироваться"  Height="60" Width="240" RenderTransformOrigin="0.5,0.5" Background="#FFB8B8B8" FontWeight="Bold" FontFamily="Bahnschrift" Margin="60" FontSize="20">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>
@@ -50,7 +50,7 @@
                 </Button.Resources>
             </Button>
             
-            <Button Content="Уже есть аккаунт?" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="190" Foreground="#FF62BE70" FontSize="11" >
+            <Button Content="Уже есть аккаунт?" HorizontalAlignment="Center"  VerticalAlignment="Top" Width="190" Foreground="#FF62BE70" FontSize="15" Click="AccountSing" >
                 <Button.BorderBrush>
                     <ImageBrush/>
                 </Button.BorderBrush>

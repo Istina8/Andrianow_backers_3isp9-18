@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Andrianow_backers_3isp9_18.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,34 @@ namespace Andrianow_backers_3isp9_18
         public LoginWindow()
         {
             InitializeComponent();
+        }
+
+        private void NoAccountClick(object sender, RoutedEventArgs e)
+        {
+            
+            RegistrationWindow taskWindow = new RegistrationWindow();
+            taskWindow.Show();
+            Close();
+        }
+
+        private void txtLogin_GotFocus(object sender, RoutedEventArgs e)
+        {
+            txtLogin.Text = "";
+        }
+
+        private void txtLogin_LostFocus(object sender, RoutedEventArgs e)
+        {
+            txtLogin.Text = "Login";
+        }
+
+        private void txtPassword_GotFocus(object got, RoutedEventArgs a)
+        {
+            txtPassword.Text = "";
+        }
+
+        private void txtPassword_LostFocus(object got, RoutedEventArgs a)
+        {
+            txtPassword.Text = "Password";
         }
     }
 }
