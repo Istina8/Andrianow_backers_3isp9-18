@@ -21,6 +21,9 @@ namespace Andrianow_backers_3isp9_18
     /// </summary>
     public partial class LoginWindow : Window
     {
+        /// <summary>
+        /// 12312312312312312
+        /// </summary>
         public LoginWindow()
         {
             InitializeComponent();
@@ -55,3 +58,5 @@ namespace Andrianow_backers_3isp9_18
         }
     }
 }
+
+/////
