@@ -47,8 +47,17 @@
                          LostFocus="txtRegPassword_LostFocus"
                          Foreground="#FF898989"/>
         </Border>
+            
+            <Border CornerRadius="5" BorderThickness="1" BorderBrush="Black" Width="300" Height="40" Margin="10">
+                <StackPanel Orientation="Horizontal" Height="40">
+                    <TextBlock x:Name="GenderTextBlock" Text="Gender" VerticalAlignment="Center" Foreground="#FF898989" Margin="10"/>
+                    <ComboBox x:Name="GenderComboBox" Height="40" Width="200" Background="Transparent" Opacity="0" Margin="-1,-1,-1,-1" SelectionChanged="GenderComboBox_SelectionChanged">
+                        <ComboBoxItem Content="Female"/>
+                        <ComboBoxItem Content="Male"/>
+                    </ComboBox>
+                </StackPanel>
 
-
+            </Border>
             <Border CornerRadius="5" BorderThickness="1" BorderBrush="Black" Width="300" Height="40" Margin="10">
                 <TextBox Text="Phone" Background="Transparent" BorderThickness="0" Height="20" Name="txtRegPhone" Width="120"  VerticalContentAlignment = "Center" Margin="9,4,169,4" FontSize="14" 
                          GotFocus="txtRegPhone_GotFocus"

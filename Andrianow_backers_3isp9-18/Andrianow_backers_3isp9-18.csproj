@@ -64,6 +64,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ClassHelper\Class1.cs" />
     <Compile Include="DB\BuyProduct.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -164,8 +165,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ClassHelper\" />
-    <Folder Include="Pages\" />
+    <Folder Include="DB\Pages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="DB\Model1.Context.tt">
