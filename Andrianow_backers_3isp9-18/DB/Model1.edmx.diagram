@@ -5,21 +5,21 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="444f7f4ab3fa422bb91e6bdaf193f3fb" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.BuyProduct" Width="1.5" PointX="7.5" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Client" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Gender" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Product" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Purchase" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Staff" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.sysdiagrams" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Supply" Width="1.5" PointX="7.5" PointY="6.875" IsExpanded="true" />
-        <AssociationConnector Association="Model.FK_BuyProduct_Product" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_BuyProduct_Purchase" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Client_Gender" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Purchase_Client" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Staff_Gender" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Supply_Product" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_Purchase_Staff" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.BuyProduct" Width="1.5" PointX="7.5" PointY="3.625" />
+        <EntityTypeShape EntityType="Model.ClientAccount" Width="1.5" PointX="3" PointY="1.625" />
+        <EntityTypeShape EntityType="Model.Gender" Width="1.5" PointX="0.75" PointY="3.875" />
+        <EntityTypeShape EntityType="Model.Product" Width="1.5" PointX="5.25" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.Purchase" Width="1.5" PointX="5.25" PointY="3.5" />
+        <EntityTypeShape EntityType="Model.Staff" Width="1.5" PointX="3" PointY="5.125" />
+        <EntityTypeShape EntityType="Model.sysdiagrams" Width="1.5" PointX="0.75" PointY="9.25" />
+        <EntityTypeShape EntityType="Model.Supply" Width="1.5" PointX="7.5" PointY="6.875" />
+        <AssociationConnector Association="Model.FK_BuyProduct_Product" />
+        <AssociationConnector Association="Model.FK_BuyProduct_Purchase" />
+        <AssociationConnector Association="Model.FK_Client_Gender" />
+        <AssociationConnector Association="Model.FK_Purchase_Client" />
+        <AssociationConnector Association="Model.FK_Staff_Gender" />
+        <AssociationConnector Association="Model.FK_Supply_Product" />
+        <AssociationConnector Association="Model.FK_Purchase_Staff" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

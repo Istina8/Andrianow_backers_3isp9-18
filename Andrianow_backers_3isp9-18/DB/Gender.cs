@@ -17,7 +17,7 @@ namespace Andrianow_backers_3isp9_18.DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Gender()
         {
-            this.Client = new HashSet<Client>();
+            this.ClientAccount = new HashSet<ClientAccount>();
             this.Staff = new HashSet<Staff>();
         }
     
@@ -25,7 +25,7 @@ namespace Andrianow_backers_3isp9_18.DB
         public string Title { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Client> Client { get; set; }
+        public virtual ICollection<ClientAccount> ClientAccount { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Staff> Staff { get; set; }
     }

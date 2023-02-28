@@ -27,7 +27,7 @@ namespace Andrianow_backers_3isp9_18.DB
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BuyProduct> BuyProduct { get; set; }
-        public virtual Client Client { get; set; }
+        public virtual ClientAccount ClientAccount { get; set; }
         public virtual Staff Staff { get; set; }
     }
 }

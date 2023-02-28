@@ -13,7 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using static Andrianow_backers_3isp9_18.ClassHelper.Class1;
+using static Andrianow_backers_3isp9_18.ClassHelper.EFClass;
 using Andrianow_backers_3isp9_18.Windows;
 
 
@@ -176,21 +176,22 @@ namespace Andrianow_backers_3isp9_18.Windows
                 return;
             }
 
-            int phone;
-            if (!int.TryParse(txtRegPhone.Text, out phone) || txtRegPhone.Text == "Phone")
+            string phone;
+            if (string.IsNullOrEmpty(txtRegPhone.Text) || txtRegPhone.Text == "Phone")
             {
                 MessageBox.Show("Поле Phone должно содержать номер!", "Ошибка Валидации!", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            // Добавление пользователя
-            Context.Users.Add(new DB.User
+
+            //Добавление пользователя
+            ClassHelper.EFClass.Context.ClientAccount.Add(new DB.ClientAccount
             {
                 Name = txtRegName.Text,
                 Age = age,
                 Login = txtRegLogin.Text,
                 Password = txtRegPassword.Text,
-                Phone = phone,
+                Phone = txtRegPhone.Text,
                 Gender = GenderTextBlock.Text
             });
             Context.SaveChanges();
@@ -200,9 +201,9 @@ namespace Andrianow_backers_3isp9_18.Windows
 
         }
 
-      //  LoginWindow taskWindow = new LoginWindow();
-     //   taskWindow.Show();
-      //          Close();
+        //LoginWindow taskWindow = new LoginWindow();
+        //taskWindow.Show();
+        // Close();
 
     }
 }

@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace Andrianow_backers_3isp9_18.ClassHelper
 {
-    internal class Class1
+    internal class EFClass
     {
-        public class EFClass
-        {
-            public static DB.Entities Context { get; } = new DB.Entities();
-        }
+        public static DB.Entities Context { get; } = new DB.Entities();
     }
 }

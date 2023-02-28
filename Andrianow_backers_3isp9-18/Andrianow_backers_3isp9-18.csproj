@@ -64,11 +64,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ClassHelper\Class1.cs" />
+    <Compile Include="Andrianow_backers_3isp9_18\DB\User.cs" />
+    <Compile Include="ClassHelper\EFClass.cs" />
     <Compile Include="DB\BuyProduct.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB\Client.cs">
+    <Compile Include="DB\ClientAccount.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DB\Gender.cs">
