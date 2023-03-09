@@ -108,5 +108,7 @@ namespace Andrianow_backers_3isp9_18.Windows
         {
             GetListProduct();
         }
+
+
     }
 }

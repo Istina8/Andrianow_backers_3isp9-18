@@ -40,16 +40,16 @@ namespace Andrianow_backers_3isp9_18.Windows
 
             TbProdType.ItemsSource = ClassHelper.EFClass.Context.ProductType.ToList();
             TbProdType.SelectedIndex = 0;
-            TbProdType.DisplayMemberPath = "TypeName";
+            TbProdType.DisplayMemberPath = "Title";
         }
-
+        
         public AddEdditProductWindow(Product product)
         {
             InitializeComponent();
 
             TbProdType.ItemsSource = ClassHelper.EFClass.Context.ProductType.ToList();
             TbProdType.SelectedIndex = 0;
-            TbProdType.DisplayMemberPath = "TypeName";
+            TbProdType.DisplayMemberPath = "Title";
 
             TbNameProduct.Text = product.Title.ToString();
             TbDisc.Text = product.Description.ToString();
@@ -66,7 +66,7 @@ namespace Andrianow_backers_3isp9_18.Windows
                     bitmapImage.StreamSource = stream;
                     bitmapImage.EndInit();
                     ImgProduct.Source = bitmapImage;
-
+                    
                 }
             }
 
