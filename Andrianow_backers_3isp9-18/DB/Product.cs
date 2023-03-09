@@ -24,9 +24,13 @@ namespace Andrianow_backers_3isp9_18.DB
         public int IdProduct { get; set; }
         public string Title { get; set; }
         public string Price { get; set; }
+        public string Description { get; set; }
+        public int IdProdType { get; set; }
+        public byte[] Image { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BuyProduct> BuyProduct { get; set; }
+        public virtual ProductType ProductType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Supply> Supply { get; set; }
     }

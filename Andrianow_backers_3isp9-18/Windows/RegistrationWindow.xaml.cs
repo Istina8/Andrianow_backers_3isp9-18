@@ -130,16 +130,6 @@ namespace Andrianow_backers_3isp9_18.Windows
 
         }
 
-        //1
-
-        private void GenderComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-
-        {
-            ComboBox comboBox = sender as ComboBox;
-            ComboBoxItem selectedItem = comboBox.SelectedItem as ComboBoxItem;
-            GenderTextBlock.Text = selectedItem.Content.ToString();
-        }
-
         private void GenderComboBox_DropDownClosed(object sender, EventArgs e)
         {
 
@@ -176,7 +166,7 @@ namespace Andrianow_backers_3isp9_18.Windows
                 return;
             }
 
-            string phone;
+            
             if (string.IsNullOrEmpty(txtRegPhone.Text) || txtRegPhone.Text == "Phone")
             {
                 MessageBox.Show("Поле Phone должно содержать номер!", "Ошибка Валидации!", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -191,19 +181,17 @@ namespace Andrianow_backers_3isp9_18.Windows
                 Age = age,
                 Login = txtRegLogin.Text,
                 Password = txtRegPassword.Text,
-                Phone = txtRegPhone.Text,
-                Gender = GenderTextBlock.Text
+                Phone = txtRegPhone.Text
             });
-            Context.SaveChanges();
+
+            ClassHelper.EFClass.Context.SaveChanges();
 
             MessageBox.Show("User added successfully.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
 
         }
 
-        //LoginWindow taskWindow = new LoginWindow();
-        //taskWindow.Show();
-        // Close();
+
 
     }
 }

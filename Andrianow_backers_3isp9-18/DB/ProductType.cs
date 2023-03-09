@@ -12,21 +12,18 @@ namespace Andrianow_backers_3isp9_18.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class Gender
+    public partial class ProductType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Gender()
+        public ProductType()
         {
-            this.ClientAccount = new HashSet<ClientAccount>();
-            this.Staff = new HashSet<Staff>();
+            this.Product = new HashSet<Product>();
         }
     
-        public string CodeGender { get; set; }
+        public int id { get; set; }
         public string Title { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ClientAccount> ClientAccount { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Staff> Staff { get; set; }
+        public virtual ICollection<Product> Product { get; set; }
     }
 }

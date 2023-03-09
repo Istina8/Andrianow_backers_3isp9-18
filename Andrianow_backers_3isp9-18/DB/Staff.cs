@@ -26,9 +26,7 @@ namespace Andrianow_backers_3isp9_18.DB
         public string Post { get; set; }
         public System.DateTime Birthday { get; set; }
         public string Phone { get; set; }
-        public string CodeGender { get; set; }
     
-        public virtual Gender Gender { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Purchase> Purchase { get; set; }
     }

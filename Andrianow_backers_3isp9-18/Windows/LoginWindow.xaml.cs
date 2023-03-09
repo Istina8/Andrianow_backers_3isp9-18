@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static Andrianow_backers_3isp9_18.ClassHelper.EFClass;
+
 
 namespace Andrianow_backers_3isp9_18
 {
@@ -39,23 +42,55 @@ namespace Andrianow_backers_3isp9_18
 
         private void txtLogin_GotFocus(object sender, RoutedEventArgs e)
         {
-            txtLogin.Text = "";
+            if (txtLogin.Text == "Login")
+            {
+                txtLogin.Text = "";
+            }
         }
 
         private void txtLogin_LostFocus(object sender, RoutedEventArgs e)
         {
-            txtLogin.Text = "Login";
+            if (txtLogin.Text == "")
+            {
+                txtLogin.Text = "Login";
+            }
         }
 
         private void txtPassword_GotFocus(object got, RoutedEventArgs a)
         {
-            txtPassword.Text = "";
+            if (txtPassword.Text == "Password")
+            {
+                txtPassword.Text = "";
+            }
         }
 
         private void txtPassword_LostFocus(object got, RoutedEventArgs a)
         {
-            txtPassword.Text = "Password";
+            if (txtPassword.Text == "")
+            {
+                txtPassword.Text = "Password";
+            }
         }
+        private void BtnSignIn_Click(object sender, RoutedEventArgs e)
+        {
+            var userAuth = ClassHelper.EFClass.Context.ClientAccount.ToList()
+                .Where(i => i.Login == txtLogin.Text &&
+                i.Password == txtPassword.Text)
+                .FirstOrDefault();
+
+            if (userAuth != null)
+            {
+                MessageBox.Show("OK");
+                ProductListWindow taskWindow = new ProductListWindow();
+                taskWindow.Show();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Пользователь не найден");
+            }
+        }
+
     }
 }
 

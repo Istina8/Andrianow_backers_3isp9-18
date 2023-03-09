@@ -29,8 +29,8 @@ namespace Andrianow_backers_3isp9_18.DB
     
         public virtual DbSet<BuyProduct> BuyProduct { get; set; }
         public virtual DbSet<ClientAccount> ClientAccount { get; set; }
-        public virtual DbSet<Gender> Gender { get; set; }
         public virtual DbSet<Product> Product { get; set; }
+        public virtual DbSet<ProductType> ProductType { get; set; }
         public virtual DbSet<Purchase> Purchase { get; set; }
         public virtual DbSet<Staff> Staff { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }

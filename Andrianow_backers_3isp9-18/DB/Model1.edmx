@@ -22,16 +22,8 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Age" Type="int" />
-          <Property Name="CodeGender" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="Phone" Type="nchar" MaxLength="11" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Gender">
-          <Key>
-            <PropertyRef Name="CodeGender" />
-          </Key>
-          <Property Name="CodeGender" Type="char" MaxLength="1" Nullable="false" />
-          <Property Name="Title" Type="nchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -40,6 +32,16 @@
           <Property Name="IdProduct" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Price" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdProdType" Type="int" Nullable="false" />
+          <Property Name="Image" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="ProductType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Purchase">
           <Key>
@@ -60,7 +62,6 @@
           <Property Name="Post" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Birthday" Type="date" Nullable="false" />
           <Property Name="Phone" Type="nchar" MaxLength="12" Nullable="false" />
-          <Property Name="CodeGender" Type="char" MaxLength="1" />
         </EntityType>
         <!--Ошибки, обнаруженные при создании:
 предупреждение 6002: В таблице или представлении "bakery_Andrianow_3isp9-18.dbo.Supply" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
@@ -114,15 +115,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Client_Gender">
-          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
-          <End Role="ClientAccount" Type="Self.ClientAccount" Multiplicity="*" />
+        <Association Name="FK_Product_ProductType">
+          <End Role="ProductType" Type="Self.ProductType" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Gender">
-              <PropertyRef Name="CodeGender" />
+            <Principal Role="ProductType">
+              <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="ClientAccount">
-              <PropertyRef Name="CodeGender" />
+            <Dependent Role="Product">
+              <PropertyRef Name="IdProdType" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -147,18 +148,6 @@
             </Principal>
             <Dependent Role="Purchase">
               <PropertyRef Name="IdStaff" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Staff_Gender">
-          <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
-          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Gender">
-              <PropertyRef Name="CodeGender" />
-            </Principal>
-            <Dependent Role="Staff">
-              <PropertyRef Name="CodeGender" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -208,8 +197,8 @@
         <EntityContainer Name="Хранилище ModelContainer">
           <EntitySet Name="BuyProduct" EntityType="Self.BuyProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ClientAccount" EntityType="Self.ClientAccount" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductType" EntityType="Self.ProductType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Purchase" EntityType="Self.Purchase" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -231,9 +220,9 @@
             <End Role="Purchase" EntitySet="Purchase" />
             <End Role="BuyProduct" EntitySet="BuyProduct" />
           </AssociationSet>
-          <AssociationSet Name="FK_Client_Gender" Association="Self.FK_Client_Gender">
-            <End Role="Gender" EntitySet="Gender" />
-            <End Role="ClientAccount" EntitySet="ClientAccount" />
+          <AssociationSet Name="FK_Product_ProductType" Association="Self.FK_Product_ProductType">
+            <End Role="ProductType" EntitySet="ProductType" />
+            <End Role="Product" EntitySet="Product" />
           </AssociationSet>
           <AssociationSet Name="FK_Purchase_Client" Association="Self.FK_Purchase_Client">
             <End Role="ClientAccount" EntitySet="ClientAccount" />
@@ -242,10 +231,6 @@
           <AssociationSet Name="FK_Purchase_Staff" Association="Self.FK_Purchase_Staff">
             <End Role="Staff" EntitySet="Staff" />
             <End Role="Purchase" EntitySet="Purchase" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Staff_Gender" Association="Self.FK_Staff_Gender">
-            <End Role="Gender" EntitySet="Gender" />
-            <End Role="Staff" EntitySet="Staff" />
           </AssociationSet>
           <AssociationSet Name="FK_Supply_Product" Association="Self.FK_Supply_Product">
             <End Role="Product" EntitySet="Product" />
@@ -289,8 +274,8 @@
           <FunctionImport Name="sp_upgraddiagrams" />
           <EntitySet Name="BuyProduct" EntityType="Model.BuyProduct" />
           <EntitySet Name="ClientAccount" EntityType="Model.ClientAccount" />
-          <EntitySet Name="Gender" EntityType="Model.Gender" />
           <EntitySet Name="Product" EntityType="Model.Product" />
+          <EntitySet Name="ProductType" EntityType="Model.ProductType" />
           <EntitySet Name="Purchase" EntityType="Model.Purchase" />
           <EntitySet Name="Staff" EntityType="Model.Staff" />
           <EntitySet Name="sysdiagrams" EntityType="Model.sysdiagrams" />
@@ -303,17 +288,13 @@
             <End Role="Purchase" EntitySet="Purchase" />
             <End Role="BuyProduct" EntitySet="BuyProduct" />
           </AssociationSet>
-          <AssociationSet Name="FK_Client_Gender" Association="Model.FK_Client_Gender">
-            <End Role="Gender" EntitySet="Gender" />
-            <End Role="ClientAccount" EntitySet="ClientAccount" />
-          </AssociationSet>
           <AssociationSet Name="FK_Purchase_Client" Association="Model.FK_Purchase_Client">
             <End Role="ClientAccount" EntitySet="ClientAccount" />
             <End Role="Purchase" EntitySet="Purchase" />
           </AssociationSet>
-          <AssociationSet Name="FK_Staff_Gender" Association="Model.FK_Staff_Gender">
-            <End Role="Gender" EntitySet="Gender" />
-            <End Role="Staff" EntitySet="Staff" />
+          <AssociationSet Name="FK_Product_ProductType" Association="Model.FK_Product_ProductType">
+            <End Role="ProductType" EntitySet="ProductType" />
+            <End Role="Product" EntitySet="Product" />
           </AssociationSet>
           <AssociationSet Name="FK_Supply_Product" Association="Model.FK_Supply_Product">
             <End Role="Product" EntitySet="Product" />
@@ -354,20 +335,9 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Age" Type="Int32" />
-          <Property Name="CodeGender" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="Phone" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="true" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Gender" Relationship="Model.FK_Client_Gender" FromRole="ClientAccount" ToRole="Gender" />
           <NavigationProperty Name="Purchase" Relationship="Model.FK_Purchase_Client" FromRole="ClientAccount" ToRole="Purchase" />
-        </EntityType>
-        <EntityType Name="Gender">
-          <Key>
-            <PropertyRef Name="CodeGender" />
-          </Key>
-          <Property Name="CodeGender" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="ClientAccount" Relationship="Model.FK_Client_Gender" FromRole="Gender" ToRole="ClientAccount" />
-          <NavigationProperty Name="Staff" Relationship="Model.FK_Staff_Gender" FromRole="Gender" ToRole="Staff" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -376,8 +346,20 @@
           <Property Name="IdProduct" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdProdType" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="BuyProduct" Relationship="Model.FK_BuyProduct_Product" FromRole="Product" ToRole="BuyProduct" />
+          <NavigationProperty Name="ProductType" Relationship="Model.FK_Product_ProductType" FromRole="Product" ToRole="ProductType" />
           <NavigationProperty Name="Supply" Relationship="Model.FK_Supply_Product" FromRole="Product" ToRole="Supply" />
+        </EntityType>
+        <EntityType Name="ProductType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product" Relationship="Model.FK_Product_ProductType" FromRole="ProductType" ToRole="Product" />
         </EntityType>
         <EntityType Name="Purchase">
           <Key>
@@ -401,8 +383,6 @@
           <Property Name="Post" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Phone" Type="String" Nullable="false" MaxLength="12" FixedLength="true" Unicode="true" />
-          <Property Name="CodeGender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="Gender" Relationship="Model.FK_Staff_Gender" FromRole="Staff" ToRole="Gender" />
           <NavigationProperty Name="Purchase" Relationship="Model.FK_Purchase_Staff" FromRole="Staff" ToRole="Purchase" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -456,18 +436,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Client_Gender">
-          <End Type="Model.Gender" Role="Gender" Multiplicity="1" />
-          <End Type="Model.ClientAccount" Role="ClientAccount" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Gender">
-              <PropertyRef Name="CodeGender" />
-            </Principal>
-            <Dependent Role="ClientAccount">
-              <PropertyRef Name="CodeGender" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Purchase_Client">
           <End Type="Model.ClientAccount" Role="ClientAccount" Multiplicity="1" />
           <End Type="Model.Purchase" Role="Purchase" Multiplicity="*" />
@@ -480,15 +448,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Staff_Gender">
-          <End Type="Model.Gender" Role="Gender" Multiplicity="0..1" />
-          <End Type="Model.Staff" Role="Staff" Multiplicity="*" />
+        <Association Name="FK_Product_ProductType">
+          <End Type="Model.ProductType" Role="ProductType" Multiplicity="1" />
+          <End Type="Model.Product" Role="Product" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Gender">
-              <PropertyRef Name="CodeGender" />
+            <Principal Role="ProductType">
+              <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Staff">
-              <PropertyRef Name="CodeGender" />
+            <Dependent Role="Product">
+              <PropertyRef Name="IdProdType" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -561,7 +529,6 @@
               <MappingFragment StoreEntitySet="ClientAccount">
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="CodeGender" ColumnName="CodeGender" />
                 <ScalarProperty Name="Age" ColumnName="Age" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -569,20 +536,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Gender">
-            <EntityTypeMapping TypeName="Model.Gender">
-              <MappingFragment StoreEntitySet="Gender">
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="CodeGender" ColumnName="CodeGender" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="Model.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="IdProdType" ColumnName="IdProdType" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductType">
+            <EntityTypeMapping TypeName="Model.ProductType">
+              <MappingFragment StoreEntitySet="ProductType">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -599,7 +569,6 @@
           <EntitySetMapping Name="Staff">
             <EntityTypeMapping TypeName="Model.Staff">
               <MappingFragment StoreEntitySet="Staff">
-                <ScalarProperty Name="CodeGender" ColumnName="CodeGender" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Birthday" ColumnName="Birthday" />
                 <ScalarProperty Name="Post" ColumnName="Post" />
@@ -632,7 +601,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
