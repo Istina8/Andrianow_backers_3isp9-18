@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using static Andrianow_backers_3isp9_18.ClassHelper.EFClass;
 using Andrianow_backers_3isp9_18.Windows;
 using Andrianow_backers_3isp9_18.DB;
+using Andrianow_backers_3isp9_18.ClassHelper;
 
 namespace Andrianow_backers_3isp9_18.Windows
 {
@@ -75,13 +76,13 @@ namespace Andrianow_backers_3isp9_18.Windows
             // вывод итгового списка
             LvProduct.ItemsSource = products;
         }
-
+        //Добавление продукта
         private void BtnAddProduct_Click(object sender, RoutedEventArgs e)
         {
             AddEdditProductWindow addEditProductWindow = new AddEdditProductWindow();
             addEditProductWindow.ShowDialog();
         }
-
+        //Редактирование продуктов
         private void BtnEditProduct_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
@@ -98,6 +99,20 @@ namespace Andrianow_backers_3isp9_18.Windows
             GetListProduct();
 
         }
+        // Добавление продукта в корзину
+
+        private void BtnAddToCartProduct_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            if (button == null)
+            {
+                return;
+            }
+
+            var product = button.DataContext as Product;
+            CartProductClass.products.Add(product);
+            MessageBox.Show($"Товар {product.Title} успешно добавлен в корзину");
+        }
 
         private void TbSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -109,6 +124,10 @@ namespace Andrianow_backers_3isp9_18.Windows
             GetListProduct();
         }
 
-
+        private void OpenCartClick(object sender, RoutedEventArgs e)
+        {
+            CartWindow taskWindow = new CartWindow();
+            taskWindow.Show();
+        }
     }
 }

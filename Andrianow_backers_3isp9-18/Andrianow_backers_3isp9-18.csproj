@@ -65,6 +65,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Andrianow_backers_3isp9_18\DB\User.cs" />
+    <Compile Include="ClassHelper\CartProductClass.cs" />
     <Compile Include="ClassHelper\EFClass.cs" />
     <Compile Include="DB\BuyProduct.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -114,6 +115,9 @@
     <Compile Include="Windows\AddEdditProductWindow.xaml.cs">
       <DependentUpon>AddEdditProductWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\CartWindow.xaml.cs">
+      <DependentUpon>CartWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\ProductListWindow.xaml.cs">
       <DependentUpon>ProductListWindow.xaml</DependentUpon>
     </Compile>
@@ -121,6 +125,10 @@
       <DependentUpon>RegistrationWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Windows\AddEdditProductWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\CartWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -193,6 +201,8 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resur\pencil-box.png" />
+    <Resource Include="Resur\pngwing.com.png" />
     <Resource Include="Resur\1635623975_preview_7700-b.i72363-k0rwhXA-h1800-l1.jpg" />
     <Resource Include="Resur\1623866981_17-phonoteka_org-p-pattern-vipechka-krasivo-20.jpg" />
   </ItemGroup>
