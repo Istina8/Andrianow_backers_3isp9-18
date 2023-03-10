@@ -15,7 +15,6 @@ using System.Windows.Shapes;
 using Andrianow_backers_3isp9_18.Windows;
 using static Andrianow_backers_3isp9_18.ClassHelper.CartProductClass;
 using Andrianow_backers_3isp9_18.ClassHelper;
-using Andrianow_backers_3isp9_18.Windows.ProductListWindow.xaml.cs;
 
 namespace Andrianow_backers_3isp9_18.Windows
 {
@@ -30,9 +29,9 @@ namespace Andrianow_backers_3isp9_18.Windows
 
         }
 
-        private void GetListCartProduct()
+        public void GetListCartProduct() 
         {
-            CartProduct.ItemsSource = product;
+            CartProduct.ItemsSource = ClassHelper.CartProductClass.products;
         }
 
 
