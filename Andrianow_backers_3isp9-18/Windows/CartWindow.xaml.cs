@@ -27,13 +27,8 @@ namespace Andrianow_backers_3isp9_18.Windows
         {
             InitializeComponent();
 
-        }
-
-        public void GetListCartProduct() 
-        {
             CartProduct.ItemsSource = ClassHelper.CartProductClass.products;
         }
-
 
 
         //private void BtnAddProduct_Click(object sender, RoutedEventArgs e)

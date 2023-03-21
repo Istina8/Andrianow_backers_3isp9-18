@@ -5,80 +5,76 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Andrianow_backers_3isp9_18.Windows"
         mc:Ignorable="d"
-        Title="CartWindow" Height="500" Width="400">
+        Title="CartWindow" Height="500" Width="400" MinHeight="300" MinWidth="150">
     <Grid>
-
-        <TextBlock Text="Ваша Корзина" 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+            <TextBlock Text="Ваша Корзина" 
                        FontSize="40" 
                        TextAlignment="Center" 
-                       Foreground="Black" FontWeight="Bold"/>
+                       Foreground="Black" 
+                       FontWeight="Bold"
+                       Margin="0 0 0 0"/>
+
+            <ListView x:Name="CartProduct"
+                      Margin="0,10,0,0" 
+                      d:ItemsSource="{d:SampleData ItemCount=5}"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                      Grid.Row="1">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Width="100"
+                                Height="150"
+                                BorderThickness="1"
+                                BorderBrush="Blue"
+                                Margin="8"
+                                Grid.Row="2">
+                            <StackPanel>
+                                <Image Height="80" 
+                                       Width="80"
+                                       Margin="0 8 0 0">
+                                    <Image.Source>
+                                        <Binding Path="Image">
+                                            <Binding.TargetNullValue>
+                                                <ImageSource>/Resur/1635623975_preview_7700-b.i72363-k0rwhXA-h1800-l1.jpg</ImageSource>
+                                            </Binding.TargetNullValue>
+                                        </Binding>
+                                    </Image.Source>
+                                </Image>
+
+                                <TextBlock Text="{Binding Title}" 
+                                           FontSize="14"
+                                           Margin="10 0 0 0"/>
+
+                                <TextBlock Text="{Binding Price}" 
+                                           FontSize="14"
+                                           Margin="10 0 0 0"/>
+
+                                <TextBlock Text="{Binding ProdType}" 
+                                           FontSize="14"
+                                           Margin="10 0 0 0"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button x:Name="BuyButton" 
+                    Content="Купить"
+                    Width="100"
+                    Height="40"
+                    HorizontalAlignment="Center"
+                    Margin="0,0,0,0"
+                    Grid.Row="3"/>
         
-
-        
-            <ListView
-                  x:Name="CartProduct"
-                  Margin="0,58,0,57" 
-                  d:ItemsSource="{d:SampleData ItemCount=5}"
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel/>
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Border Width="100"
-                            Height="150"
-                            BorderThickness="1"
-                            BorderBrush="Blue"
-                            Margin="8"
-                            
-                            >
-                        <StackPanel>
-
-                            <Image Height="80" 
-                                   Width="80"
-                                   Margin="0 8 0 0">
-                                <Image.Source>
-                                    <Binding Path="Image">
-                                        <Binding.TargetNullValue>
-                                            <ImageSource>/Resur/1635623975_preview_7700-b.i72363-k0rwhXA-h1800-l1.jpg</ImageSource>
-                                        </Binding.TargetNullValue>
-                                    </Binding>
-                                </Image.Source>
-
-                            </Image>
-
-                            <TextBlock Text="{Binding Title}" 
-                                       FontSize="14"
-                                       Margin="10 0 0 0"/>
-
-                            <TextBlock Text="{Binding Price}" 
-                                       FontSize="14"
-                                       Margin="10 0 0 0"/>
-                            <TextBlock Text="{Binding ProdType}" 
-                                       FontSize="14"
-                                       Margin="10 0 0 0"/>
-
-
-                        </StackPanel>
-                    </Border>
-
-                </DataTemplate>
-            </ListView.ItemTemplate>
-
-        </ListView>
-
-
-        <Button x:Name="BuyButton" 
-                Content="Купить"
-                Width="100"
-                Height="40"
-                HorizontalAlignment="Center"
-                Margin="0,430,0,10"
-                />
-
-
     </Grid>
 </Window>

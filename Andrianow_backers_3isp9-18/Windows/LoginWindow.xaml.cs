@@ -80,7 +80,7 @@ namespace Andrianow_backers_3isp9_18
 
             if (userAuth != null)
             {
-                MessageBox.Show("OK");
+               
                 ProductListWindow taskWindow = new ProductListWindow();
                 taskWindow.Show();
                 Close();
