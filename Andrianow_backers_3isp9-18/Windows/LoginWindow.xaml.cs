@@ -81,9 +81,10 @@ namespace Andrianow_backers_3isp9_18
             if (userAuth != null)
             {
                
-                ProductListWindow taskWindow = new ProductListWindow();
+                MenuWindow taskWindow = new MenuWindow();
                 taskWindow.Show();
                 Close();
+                Andrianow_backers_3isp9_18.ClassHelper.UserdataClass.user = userAuth;
             }
             else
             {
