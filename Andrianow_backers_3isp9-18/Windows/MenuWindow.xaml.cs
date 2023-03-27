@@ -22,12 +22,13 @@ namespace Andrianow_backers_3isp9_18.Windows
         public MenuWindow()
         {
             InitializeComponent();
-            NameClient.Text = ClassHelper.UserdataClass.user.Name.ToString();
+            NameClient.Text = ClassHelper.UserdataClass.AuthUser.Name.ToString();
         }
 
         private void btProdList_Click(object sender, RoutedEventArgs e)
         {
-            MenuWindow taskWindow = new MenuWindow();
+            ProductListWindow taskWindow = new ProductListWindow();
+            taskWindow.Show();
             Close();
         }
     }

@@ -80,11 +80,12 @@ namespace Andrianow_backers_3isp9_18
 
             if (userAuth != null)
             {
-               
+                ClassHelper.UserdataClass.AuthUser = userAuth;
+
                 MenuWindow taskWindow = new MenuWindow();
                 taskWindow.Show();
                 Close();
-                Andrianow_backers_3isp9_18.ClassHelper.UserdataClass.user = userAuth;
+                
             }
             else
             {
